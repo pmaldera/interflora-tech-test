@@ -1,5 +1,7 @@
 # Interflora Danemark Technical test
 
+This is a bowling points algorithm test with a little UI and some data exchange with a given remote endpoint.
+
 ## Quick Start
 
 - `yarn install`
