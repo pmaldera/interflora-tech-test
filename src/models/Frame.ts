@@ -1,0 +1,1 @@
+export type Frames = Array<Array<number>>;

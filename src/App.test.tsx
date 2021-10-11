@@ -1,9 +1,51 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { computePoints } from './utils/scoreUtil';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('computes [[3,7],[10,0],[8,2],[8,1],[10,0],[3,4],[7,0],[5,5],[3,2],[2,5]] correctly', () => {
+    expect(
+        computePoints([[3,7],[10,0],[8,2],[8,1],[10,0],[3,4],[7,0],[5,5],[3,2],[2,5]])
+    ).toEqual(
+        [20,40,58,67,84,91,98,111,116,123]
+    );
+})
+
+test('computes full strikes game correctly', () => {
+    expect(
+        computePoints([[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0], [10,0], [10,0]])
+    ).toEqual(
+        [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
+    );
+})
+
+test('computes full 0s game correctly', () => {
+    expect(
+        computePoints([[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0], [0,0], [0,0]])
+    ).toEqual(
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    );
+})
+
+test('computes full spares game correctly', () => {
+    expect(
+        computePoints([[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5],[5,5]])
+    ).toEqual(
+        [15, 30, 45, 60, 75, 90, 105, 120, 135, 150]
+    );
+})
+
+test('computes full 9-0 game correctly', () => {
+    expect(
+        computePoints([[9,0],[9,0],[9,0],[9,0],[9,0],[9,0],[9,0],[9,0],[9,0],[9,0],[9,0],[9,0]])
+    ).toEqual(
+        [9,18,27,36,45,54,63,72,81,90]
+    );
+})
+
+
+test('computes [[3,7],[5,5],[4,6],[10,0],[10,0],[10,0],[7,3],[1,0],[6,4],[2,1]] correctly', () => {
+    expect(
+        computePoints([[3,7],[5,5],[4,6],[10,0],[10,0],[10,0],[7,3],[1,0],[6,4],[2,1]] )
+    ).toEqual(
+        [15,29,49,79,106,126,137,138,150,153]
+    );
+})
+
